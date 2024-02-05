@@ -23,20 +23,6 @@ app.init = () => {
         </div> `;
   };
 
-  const gridNoMap = (user) => {
-    return `
-        <div class="card grid-view">
-          <div class="top"></div>
-          <img class="grid-img" src="${user.img}">
-          <div class="bottom">
-            <h3>${user.names}</h3>
-            <h4>${user.user}</h4>
-            <p>${user.mail}</p>
-            <a href="">SE WEBSITE</a>
-          </div>
-        </div> `;
-  };
-
   const listTmpl = (user) => {
     return `
         <div class="card list-view">
@@ -52,23 +38,12 @@ app.init = () => {
         </div> `;
   };
 
-  
-
   const renderGridView = () => {
     cards.replaceChildren();
     mapBtn.style.display = "block";
 
     userData.forEach((user) => {
       cards.insertAdjacentHTML("beforeend", gridTmpl(user));
-    });
-  };
-
-  const renderGridNoMap = () => {
-    cards.replaceChildren();
-    mapBtn.style.display = "block";
-
-    userData.forEach((user) => {
-      cards.insertAdjacentHTML("beforeend", gridNoMap(user));
     });
   };
 
@@ -82,15 +57,19 @@ app.init = () => {
   renderGridView();
 
   let isMapVisible = true;
-  const bob = document.querySelector(".bob");
+  const bob = document.querySelectorAll(".bob");
 
   const toggleMap = () => {
     if (isMapVisible) {
-      bob.classList.add("hide-map");
-      isMapVisible = false;
+      bob.forEach((user) => {
+        user.classList.add("hide-map");
+        isMapVisible = false;
+      });
     } else {
-      bob.classList.remove("hide-map");
-      isMapVisible = true;
+      bob.forEach((user) => {
+        user.classList.remove("hide-map");
+        isMapVisible = true;
+      });
     }
   };
 
