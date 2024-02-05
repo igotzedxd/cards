@@ -29,12 +29,13 @@ li {
 /* CSS START */
 
 body {
-  background: grey;
+  background: rgb(227, 226, 226);
 }
+
+
 
 .cards {
   width: 80vw;
-  height: 80vh;
   margin: 20vh auto;
   display: flex;
   flex-flow: row wrap;
@@ -42,13 +43,56 @@ body {
 }
 
 .card {
-  width: 400px;
-  height: 500px;
   position: relative;
-  flex-basis: 30%;
-  margin-bottom: 150px;
 }
 
+.list-view {
+  width: 80vw;
+  height: 140px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgb(240, 240, 240);
+  border-radius: 30px;
+  box-shadow: 3px 3px 10px rgb(152, 151, 151);
+  padding: 0 40px;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.list-view img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 50%;
+  margin-right: 20px;
+  border: 3px solid white;
+  box-shadow: 0 0 5px rgb(152, 151, 151);
+}
+
+.user {
+  display: flex;
+}
+
+.user span {
+  display: grid;
+  place-content: center;
+}
+
+.mail {
+  color: rgb(161, 159, 159);
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Grid view */
+.grid-view {
+  width: 400px;
+  height: 500px;
+  margin-bottom: 150px;
+}
 .top {
   position: absolute;
   inset: 0;
@@ -84,7 +128,8 @@ body {
   gap: 20px;
 }
 
-.bottom a {
+.bottom a,
+.list-view a {
   background: black;
   padding: 5px 30px;
   color: white;
@@ -97,4 +142,22 @@ body {
 
 .bottom h4 {
   font-size: 1.4rem;
+}
+
+.views {
+  position: absolute;
+  inset: 0;
+  width: 10vw;
+  height: 100vh;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.views i {
+  display: block;
+  font-size: 2rem;
+  cursor: pointer;
 }

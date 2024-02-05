@@ -1,53 +1,55 @@
-const cards = document.querySelector(".cards");
+import userData from ".././data/users.json" assert { type: "json" };
 
-let cardInfo = [
-  {
-    img: "https://unsplash.it/300/300",
-    names: "Ben Dover",
-    user: "BenDover",
-    mail: "bendover@gmail.com",
-  },
-  {
-    img: "https://unsplash.it/301/300",
-    names: "Moe Lester",
-    user: "MoeLester",
-    mail: "moelester@gmail.com",
-  },
-  {
-    img: "https://unsplash.it/300/301",
-    names: "Jack Mehoff",
-    user: "JackMehoff",
-    mail: "jackmehoff@gmail.com",
-  },
-  {
-    img: "https://unsplash.it/302/300",
-    names: "Mike Litoris",
-    user: "Mike Litoris",
-    mail: "mikelitoris@gmail.com",
-  },
-  {
-    img: "https://unsplash.it/300/302",
-    names: "Johnny Singed",
-    user: "Johnny Singed",
-    mail: "johnnysinged@gmail.com",
-  },
-  {
-    img: "https://unsplash.it/301/301",
-    names: "Kurt Cobain",
-    user: "Kurt Cobain",
-    mail: "kurtcobain@gmail.com",
-  },
-];
+const app = {};
 
-cardInfo.forEach((card) => {
-  cards.innerHTML += `
-        <div class="card">
-          <div class="top"><img src="${card.img}"</div>
+app.init = () => {
+  const cards = document.querySelector(".cards");
+  const gridBtn = document.querySelector(".grid-btn");
+  const listBtn = document.querySelector(".list-btn");
+  const gridTmpl = (user) => {
+    return `
+        <div class="card grid-view">
+          <div class="top"><img src="${user.img}"</div>
           <div class="bottom">
-            <h3>${card.names}</h3>
-            <h4>${card.user}</h4>
-            <p>${card.mail}</p>
+            <h3>${user.names}</h3>
+            <h4>${user.user}</h4>
+            <p>${user.mail}</p>
             <a href="">SE WEBSITE</a>
           </div>
         </div> `;
-});
+  };
+
+  const listTmpl = (user) => {
+    return `
+        <div class="card list-view">
+          <div class="user">
+          <img class="avatar" src="${user.img}"<div class="info">
+          <span>
+            <h2>${user.names}</h2>
+            <h3>${user.user}</h3>
+          </span>
+          </div>
+          <p class="mail">${user.mail}</p>
+          <a href="">SE WEBSITE</a>
+        </div> `;
+  };
+
+  const renderGridView = () => {
+    cards.replaceChildren();
+    userData.forEach((user) => {
+      cards.insertAdjacentHTML("beforeend", gridTmpl(user));
+    });
+  };
+
+  const renderListView = () => {
+    cards.replaceChildren();
+    userData.forEach((user) => {
+      cards.insertAdjacentHTML("beforeend", listTmpl(user));
+    });
+  };
+  renderGridView();
+  gridBtn.addEventListener("click", renderGridView);
+  listBtn.addEventListener("click", renderListView);
+};
+
+app.init();
