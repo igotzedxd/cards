@@ -12,7 +12,7 @@ app.init = () => {
     return `
         <div class="card grid-view">
           <div class="top">
-          <iframe class="bob" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2204.2017673318446!2d9.448194!3d56.464285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464be49bbbedfe9b%3A0xe25d8ea6a774bab!2sMedia%20College%20Denmark%20%2F%20Medieskolerne!5e0!3m2!1sda!2sdk!4v1707133776597!5m2!1sda!2sdk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+          <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2204.2017673318446!2d9.448194!3d56.464285!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x464be49bbbedfe9b%3A0xe25d8ea6a774bab!2sMedia%20College%20Denmark%20%2F%20Medieskolerne!5e0!3m2!1sda!2sdk!4v1707133776597!5m2!1sda!2sdk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
           <img class="grid-img" src="${user.img}">
           <div class="bottom">
             <h3>${user.names}</h3>
@@ -57,16 +57,16 @@ app.init = () => {
   renderGridView();
 
   let isMapVisible = true;
-  const bob = document.querySelectorAll(".bob");
+  const map = document.querySelectorAll(".map");
 
   const toggleMap = () => {
     if (isMapVisible) {
-      bob.forEach((user) => {
+      map.forEach((user) => {
         user.classList.add("hide-map");
         isMapVisible = false;
       });
     } else {
-      bob.forEach((user) => {
+      map.forEach((user) => {
         user.classList.remove("hide-map");
         isMapVisible = true;
       });
