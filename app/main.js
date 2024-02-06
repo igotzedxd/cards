@@ -1,4 +1,16 @@
-import userData from ".././data/users.json" assert { type: "json" };
+async function fetchUserData() {
+  try {
+    const response = await fetch("../data/users.json");
+    const userData = await response.json();
+    return userData;
+  } catch (error) {
+    console.error("Error fetching or parsing data:", error);
+  }
+}
+
+const userData = await fetchUserData();
+
+console.log(userData);
 
 const app = {};
 
@@ -38,7 +50,7 @@ app.init = () => {
         </div> `;
   };
 
-  const renderGridView = () => {
+  const renderGridView = async () => {
     cards.replaceChildren();
     mapBtn.classList.add("hide-map");
 
