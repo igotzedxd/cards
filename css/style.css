@@ -32,30 +32,36 @@ body {
   background: rgb(227, 226, 226);
 }
 
+img {
+  object-fit: cover;
+  object-position: center;
+}
+/* .cards = parent container */
 .cards {
-  width: 80vw;
+  max-width: 80vw;
   margin: 20vh auto;
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: space-evenly;
+  gap: 30px;
 }
 
+/* makes all card position relative */
 .card {
   position: relative;
 }
 
+/* list view */
 .list-view {
   width: 80vw;
   height: 140px;
+  padding: 0 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   background: rgb(240, 240, 240);
   border-radius: 30px;
   box-shadow: 3px 3px 10px rgb(152, 151, 151);
-  padding: 0 40px;
-  position: relative;
-  margin-bottom: 40px;
 }
 
 .list-view img {
@@ -86,18 +92,20 @@ body {
 }
 
 /* Grid view */
-.bob {
+.map {
   border-radius: 20px 20px 0 0;
   height: 100%;
 }
-.bob.hide-map {
+.map.hide-map {
   display: none;
 }
 
 .grid-view {
   width: 400px;
-  height: 500px;
-  margin-bottom: 150px;
+  height: 450px;
+  margin-bottom: 200px;
+  border-radius: 30px;
+  box-shadow: 3px 3px 10px rgb(152, 151, 151);
 }
 .top {
   position: absolute;
@@ -114,8 +122,6 @@ body {
   border: 5px solid white;
   width: 200px;
   height: 200px;
-  object-fit: cover;
-  object-position: center;
   border-radius: 50%;
   position: absolute;
   top: -100px;
@@ -124,14 +130,14 @@ body {
 }
 
 .bottom {
-  display: grid;
-  place-content: center;
   position: absolute;
   inset: 0;
+  display: grid;
+  place-content: center;
   top: 150px;
-  height: 250px;
+  height: 300px;
   width: 400px;
-  background: white;
+  background: radial-gradient(rgb(238, 238, 239), rgb(230, 229, 231));
   border-radius: 0 0 30px 30px;
   text-align: center;
   gap: 20px;
@@ -154,7 +160,7 @@ body {
 }
 
 .views {
-  position: absolute;
+  position: fixed;
   inset: 0;
   width: 10vw;
   height: 100vh;
@@ -163,10 +169,42 @@ body {
   align-items: center;
   justify-content: center;
   gap: 20px;
+  z-index: 99;
 }
 
 .views i {
   display: block;
   font-size: 2rem;
   cursor: pointer;
+}
+
+.views i:hover {
+  cursor: pointer;
+}
+
+@media screen and (max-width: 900px) {
+  .mail {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  .list-view {
+    flex-flow: column wrap;
+    padding: 20px 0;
+    height: auto;
+  }
+
+  .user {
+    margin-bottom: 20px;
+  }
+  .mail {
+    display: none;
+  }
+  .grid-view,
+  .top,
+  .bottom,
+  .map {
+    width: 60vw;
+  }
 }
