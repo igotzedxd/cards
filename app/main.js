@@ -40,7 +40,7 @@ app.init = () => {
 
   const renderGridView = () => {
     cards.replaceChildren();
-    mapBtn.style.display = "block";
+    mapBtn.classList.add("hide-map");
 
     userData.forEach((user) => {
       cards.insertAdjacentHTML("beforeend", gridTmpl(user));
@@ -49,7 +49,7 @@ app.init = () => {
 
   const renderListView = () => {
     cards.replaceChildren();
-    mapBtn.style.display = "none";
+    mapBtn.classList.remove("hide-map");
     userData.forEach((user) => {
       cards.insertAdjacentHTML("beforeend", listTmpl(user));
     });
