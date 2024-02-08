@@ -10,8 +10,6 @@ async function fetchUserData() {
 
 const userData = await fetchUserData();
 
-console.log(userData);
-
 const app = {};
 
 app.init = () => {
@@ -50,7 +48,7 @@ app.init = () => {
         </div> `;
   };
 
-  const renderGridView = async () => {
+  const renderGridView = () => {
     cards.replaceChildren();
     mapBtn.classList.add("hide-map");
 
@@ -89,5 +87,4 @@ app.init = () => {
   listBtn.addEventListener("click", renderListView);
   mapBtn.addEventListener("click", toggleMap);
 };
-
 app.init();
